@@ -1,5 +1,4 @@
-1. pipenvのインストール
-2. クローンする
-3. pipenv install を実行
-4. uvicorn main:app --reload
-5. localhost:8000にアクセス
+1. git clone する
+2. docker-compose up --build  (--buildは初回のみ)
+3. localhost:8000/ にアクセスして動作確認
+4. Ctrl + C で止める
