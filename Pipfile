@@ -8,7 +8,7 @@ fastapi = "*"
 uvicorn = "*"
 sqlalchemy = "*"
 requests = "*"
-pydantic = "*"
+pydantic = {extras = ["email"], version = "*"}
 psycopg2 = "*"
 uuid = "*"
 
