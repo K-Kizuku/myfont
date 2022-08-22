@@ -12,7 +12,7 @@ HOST = os.environ.get('POSTGRES_HOST')
 SQLALCHEMY_DETABASE_URL = "{}://{}:{}@{}/{}".format(
     DATABASE, USER, PASSWORD, HOST, DB_NAME
 )
-print(SQLALCHEMY_DETABASE_URL)
+
 engine = create_engine(
     SQLALCHEMY_DETABASE_URL
 )
