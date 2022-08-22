@@ -10,6 +10,7 @@ sqlalchemy = "*"
 requests = "*"
 pydantic = "*"
 psycopg2 = "*"
+uuid = "*"
 
 [dev-packages]
 
