@@ -4,8 +4,6 @@ RUN mkdir -p /code
 COPY . /code/
 WORKDIR /code
 
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y libgl1-mesa-dev
 RUN apt install -y libpq-dev build-essential
 RUN pip install pipenv
 RUN pipenv install

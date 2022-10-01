@@ -24,15 +24,15 @@ services:
     depends_on:
       - db
 
-  # adminer:
-  #   container_name: myfont_adminer
-  #   hostname: adminer
-  #   image: adminer:4.7.5
-  #   restart: always
-  #   ports:
-  #     - 8080:8080
-  #   depends_on:
-  #     - db
+  adminer:
+    container_name: myfont_adminer
+    hostname: adminer
+    image: adminer:4.7.5
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
 
 volumes:
   dbdata: null
