@@ -5,6 +5,7 @@ class SignInPayload(BaseModel):
     password: str
 
 class SignUpPayload(BaseModel):
+    name: str
     email: EmailStr
     password: str
 
@@ -18,6 +19,7 @@ class Image(BaseModel):
     
 class User(BaseModel):
     user_id: str
+    name: str
     email: str
     images: list[Image]
 

@@ -11,6 +11,7 @@ def generate_uuid():
 class User(Base):
     __tablename__ = 'users'
     user_id = Column(String,primary_key=True,default=generate_uuid)
+    name = Column(String)
     email = Column(String, unique=True,nullable=False)
     password_hash = Column(String)
     images = relationship("Image")

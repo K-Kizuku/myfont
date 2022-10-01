@@ -15,13 +15,14 @@ def generate_password_hash(password: str):
     return hash.decode()
 
 
-def create_user(db: Session,email: str, password: str) -> UserSchema:
+def create_user(db: Session,name: str, email: str, password: str) -> UserSchema:
     same_user = db.query(User).filter(User.email == email).first()
     if same_user is not None:
         raise HTTPException(
             status_code=400, detail="User is already existed!!")
     password_hash = generate_password_hash(password)
     user_orm = User(
+        name=name,
         email=email,
         password_hash=password_hash
     )
@@ -54,3 +55,8 @@ def delete_user_by_id(db: Session, user_id: str) -> None:
     db.delete(user_orm)
     db.commit()
     return
+
+def get_all_users(db: Session) -> list[UserSchema]:
+    users_orm = db.query(User).all()
+    users = list(map(UserSchema.from_orm, users_orm))
+    return users

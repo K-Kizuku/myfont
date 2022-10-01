@@ -6,7 +6,7 @@ from schemas.schemas import DeleteDetailModel
 from schemas.users import User as UserSchema
 from schemas.users import SignUpPayload, SignInPayload, AuthInfo
 from db.database import get_db
-from cruds.users import create_user, get_user_by_id, delete_user_by_id
+from cruds.users import create_user, get_user_by_id, delete_user_by_id, get_all_users
 from utils.jwt import generate_token, get_current_user
 
 user_router = APIRouter()
@@ -14,7 +14,7 @@ user_router = APIRouter()
 
 @user_router.post("/signup", response_model=UserSchema)
 async def signup(payload: SignUpPayload, db: Session = Depends(get_db)):
-    user = create_user(db, payload.email, payload.password)
+    user = create_user(db, payload.name, payload.email, payload.password)
     return user
 
 
@@ -46,3 +46,10 @@ async def get_user(uid: str, db: Session = Depends(get_db), user_id: str = Depen
         raise HTTPException(status_code=403, detail="jwt_token is invalid!")
     user = get_user_by_id(db, uid)
     return user
+
+@user_router.get("/", response_model=list[UserSchema])
+async def get_users(db: Session = Depends(get_db), user_id: str = Depends(get_current_user)):
+    if user_id is None:
+        raise HTTPException(status_code=403, detail="jwt_token is invalid")
+    users = get_all_users(db)
+    return users
