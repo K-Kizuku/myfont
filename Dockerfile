@@ -4,6 +4,7 @@ RUN mkdir -p /code
 COPY . /code/
 WORKDIR /code
 
+RUN apt update
 RUN apt install -y libpq-dev build-essential
 RUN pip install pipenv
 RUN pipenv install
