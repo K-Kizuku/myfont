@@ -9,7 +9,7 @@ from db.models import User
 from cruds.users import get_user_by_email, generate_password_hash
 from sqlalchemy.orm.session import Session
 
-SECRET = os.environ.get('SECRET')
+SECRET = os.environ.get('SECRET', "jwt_secret")
 
 
 def generate_token(db: Session, email: str, password: str) -> str:

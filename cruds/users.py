@@ -6,7 +6,8 @@ from db.models import User
 from schemas.users import User as UserSchema
 
 
-salt = os.environ.get("PASSWORD_HASH_SALT").encode()
+salt = os.environ.get("PASSWORD_HASH_SALT",
+                      "$2a$12$4CZUCt6WH8ftjjlKsASceu").encode()
 
 
 def generate_password_hash(password: str):
