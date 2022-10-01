@@ -18,5 +18,6 @@ class User(Base):
 class Image(Base):
     __tablename__ = "images"
     image_id = Column(String,primary_key=True, default=generate_uuid)
+    character = Column(String, nullable=False)
     image_url = Column(String, unique=True, nullable=False)
     user_id = Column(ForeignKey("users.user_id"))

@@ -10,6 +10,7 @@ class SignUpPayload(BaseModel):
 
 class Image(BaseModel):
     image_id: str
+    character: str
     image_url: str
 
     class Config:
