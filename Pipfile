@@ -11,6 +11,8 @@ requests = "*"
 pydantic = {extras = ["email"], version = "*"}
 psycopg2 = "*"
 uuid = "*"
+pyjwt = "*"
+bcrypt = "*"
 
 [dev-packages]
 
