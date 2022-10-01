@@ -1,3 +1,2 @@
-release: apt-get update && apt-get upgrade -y
-release: apt-get install -y libgl1-mesa-dev
+release: ./init.sh
 web: uvicorn main:app --host=0.0.0.0 --port=${PORT:-5000}
