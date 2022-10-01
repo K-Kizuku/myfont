@@ -17,6 +17,8 @@ pillow = "*"
 numpy = "*"
 cloudinary = "*"
 python-dotenv = "*"
+pytest = "*"
+sqlalchemy-utils = "*"
 
 [dev-packages]
 
