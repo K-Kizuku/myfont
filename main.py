@@ -22,5 +22,4 @@ app.add_middleware(
 async def myfont():
     return {"message": "welcome to myfont!"}
 
-
 app.include_router(router, prefix="/api/v1")
