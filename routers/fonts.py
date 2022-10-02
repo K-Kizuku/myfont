@@ -5,14 +5,12 @@ from schemas.fonts import FontPayload
 from utils.jwt import get_current_user
 from cruds.images import insert_images, delete_images_by_uid
 from schemas.users import Image
-from time import sleep
 
 font_router = APIRouter()
 
 
 @font_router.post("/", response_model=list[Image])
 async def create_font_images(fonts_images: FontPayload, user_id: str = Depends(get_current_user), db: Session = Depends(get_db)):
-    sleep(3)
     if user_id is None:
         raise HTTPException(status_code=403, detail="jwt_token is invalid!")
     images = insert_images(db, fonts_images.images, user_id)
