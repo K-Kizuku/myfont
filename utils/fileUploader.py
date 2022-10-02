@@ -20,7 +20,7 @@ cloudinary.config(
     secure = True
 )
 
-def getClondinaryUrl(img_text: str, user_id: str) -> str:
+def getClondinaryUrl(img_character: str, img_text: str, user_id: str) -> str:
     img_text_sprited = img_text.split(",")
     if len(img_text_sprited) != 2:
         raise HTTPException(status_code=400,detail="image text uncollect")
@@ -39,7 +39,7 @@ def getClondinaryUrl(img_text: str, user_id: str) -> str:
     img_prop = np.array(img_prop).astype("uint8")
     im = Image.fromarray(img_prop)
     im.save("./test.png")
-    res = cloudinary.uploader.upload(file="./test.png", unique_filename=True, tags=user_id)
+    res = cloudinary.uploader.upload(file="./test.png", public_id= "{}_{}.png".format(img_character,user_id) ,unique_filename=True, tags=user_id)
     return res["url"]
 
 
