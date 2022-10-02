@@ -12,10 +12,10 @@ font_router = APIRouter()
 
 @font_router.post("/", response_model=list[Image])
 async def create_font_images(fonts_images: FontPayload, user_id: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    sleep(3)
     if user_id is None:
         raise HTTPException(status_code=403, detail="jwt_token is invalid!")
     images = insert_images(db, fonts_images.images, user_id)
-    sleep(3)
     return images
 
 @font_router.delete("/")
