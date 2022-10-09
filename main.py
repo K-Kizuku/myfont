@@ -7,7 +7,8 @@ from routers.main import router
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="myfont_api"
+    title="myfont_api",
+    docs_url=None, redoc_url=None, openapi_url=None
 )
 
 app.add_middleware(
