@@ -11,7 +11,9 @@ async def send_email(address: EmailRequest, user_id: str = Depends(get_current_u
         raise HTTPException(status_code=403, detail="jwt_token is invalid!")
     try:
         body = create_message(FROM_ADDRESS, address.address,
-                              "フォント作成が完了しました!", "hello world")
+                              "フォント作成が完了しました!",
+                              "プロトタイプなので実際に想定していた機械学習モデルのフローを追加していません。"
+        )
         send_mail(FROM_ADDRESS, address.address, body)
     except:
         return {"message": "Failed"}
