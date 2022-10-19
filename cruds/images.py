@@ -6,7 +6,7 @@ from utils.fileUploader import getClondinaryUrl, deleteImage
 
 def insert_images(db: Session, images: list[FontImage], user_id) -> list[ImageSchema]:
     for image in images:
-        result_url = getClondinaryUrl(image.image_url, user_id)
+        result_url = getClondinaryUrl(image.character ,image.image_url, user_id)
         image_orm = Image(
             character=image.character,
             image_url=result_url,

@@ -8,6 +8,7 @@ from schemas.users import Image
 
 font_router = APIRouter()
 
+
 @font_router.post("/", response_model=list[Image])
 async def create_font_images(fonts_images: FontPayload, user_id: str = Depends(get_current_user), db: Session = Depends(get_db)):
     if user_id is None:
